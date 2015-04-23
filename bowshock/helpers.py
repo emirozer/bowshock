@@ -1,20 +1,14 @@
-import socket
 import logging
-import getpass
 import datetime
 
 def bowshock_logger():
     '''creates a logger obj'''
-    # Pull the local ip and username for meaningful logging
-    username = getpass.getuser()
-    local_ip = socket.gethostbyname(socket.gethostname())
-    # Set the logger
-    FORMAT = '%(asctime)-15s %(clientip)s %(user)-8s %(message)s'
-    logging.basicConfig(format=FORMAT)
-    extra_information = {'clientip': local_ip, 'user': username}
-    logger = logging.getLogger('fake2db_logger')
-    # --------------------
-    return logger, extra_information
+    
+    FORMAT = '%(asctime)-15s %(message)s'
+    logging.basicConfig(format=FORMAT, level=logging.DEBUG)
+    logger = logging.getLogger('bowshock_logger')
+    
+    return logger
 
 
 def nasa_api_key():

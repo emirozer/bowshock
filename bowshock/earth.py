@@ -9,12 +9,13 @@
 
 
 import requests
+import decimal
 
 from helpers import nasa_api_key, bowshock_logger, vali_date, validate_float
 
 
-logger, extra_information = bowshock_logger()
-d = extra_information
+logger = bowshock_logger()
+
 
 def imagery(lon=None, lat=None, dim=None, date=None, cloud_score=None):
     '''
@@ -26,7 +27,7 @@ def imagery(lon=None, lat=None, dim=None, date=None, cloud_score=None):
     # dim	float	0.025	width and height of image in degrees
     # date	YYYY-MM-DD  today	date of image ----if not supplied, then the most recent image (i.e., closest to today) is returned
     #cloud_score	bool	False	calculate the percentage of the image covered by clouds
-    #api_key	string	DEMO_KEY	api.data.gov key for expanded usage
+    #api_key	string	vDEMO_KEY	api.data.gov key for expanded usage
 
     # ---------EXAMPLE QUERY--------
 
@@ -34,17 +35,27 @@ def imagery(lon=None, lat=None, dim=None, date=None, cloud_score=None):
 
     '''
     
-    base_url = "https://api.date.gov/nasa/planetary/earth/imagery?"
+    base_url = "http://api.data.gov/nasa/planetary/earth/imagery?"
     
-    if not lon or lat:
+    if not lon or not lat:
         raise ValueError("imagery endpoint expects lat and lon, type has to be float. Call the method with keyword args. Ex : lon=100.75, lat=1.5")
     else:
         try:
             validate_float(lon, lat)
-            base_url + "lon=" + lon + "&" + "lat=" + lat + "&"
+            # Floats are entered/displayed as decimal numbers, but your computer 
+            # (in fact, your standard C library) stores them as binary. 
+            # You get some side effects from this transition:
+            # >>> print len(repr(0.1))
+            # 19
+            # >>> print repr(0.1)
+            # 0.10000000000000001
+            # Thus using decimal to str transition is more reliant
+            lon = decimal.Decimal(lon)
+            lat = decimal.Decimal(lat)
+            base_url += "lon=" + str(lon) + "&" + "lat=" + str(lat) + "&"
         except:
             raise ValueError("imagery endpoint expects lat and lon, type has to be float. Call the method with keyword args. Ex : lon=100.75, lat=1.5")
-
+            
     if dim:
         validate_float(dim)
         base_url + "dim=" + dim + "&"
@@ -53,15 +64,18 @@ def imagery(lon=None, lat=None, dim=None, date=None, cloud_score=None):
         raise ValueError("imagery endpoint expects date keyword argument, format : YYYY-MM-DD")
     else:
         vali_date(date)
-        base_url + "date=" + date + "&"
+        base_url += "date=" + date + "&"
 
     if cloud_score == True:
-        base_url + "cloud_score=True" + "&"
+        base_url += "cloud_score=True" + "&"
 
-    req_url = base_url + nasa_api_key()
-    logger.info("Imagery endpoint, dispatching request : %s ", req_url)
+    req_url = base_url + "api_key=" + nasa_api_key()
+    
+    logger.warning("Imagery endpoint, dispatching request : %s ", req_url)
 
     response = requests.get(req_url)
-    logger.info("Retrieved response from imagery endpoint: %s", response.text)
 
-    return response
+    print response.json
+    logger.warning("Retrieved response from imagery endpoint: %s", response.text)
+
+    return response.json
