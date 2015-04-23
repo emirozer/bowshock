@@ -80,7 +80,7 @@ def imagery(lon=None, lat=None, dim=None, date=None, cloud_score=None):
 
     response = requests.get(req_url)
 
-    print response.json
+    
     logger.warning("Retrieved response from imagery endpoint: %s", response.text)
 
     return response.json
@@ -155,8 +155,7 @@ def assets(lon=None, lat=None, begin=None, end=None):
     logger.warning("assets endpoint, dispatching request : %s ", req_url)
 
     response = requests.get(req_url)
-
-    print response.json
+    
     logger.warning("Retrieved response from assets endpoint: %s", response.text)
 
     return response.json
