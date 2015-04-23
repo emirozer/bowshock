@@ -11,7 +11,7 @@ setup(
     long_description=os.path.join(os.path.dirname(__file__), 'README.md'),
     packages=find_packages(exclude=[]),
     install_requires=[
-        'fake-factory>=0.4.2',
+        'requests>=2.6.1',
     ],
     include_package_data=True,
     classifiers=[
