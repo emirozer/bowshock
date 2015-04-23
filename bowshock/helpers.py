@@ -1,5 +1,6 @@
 import logging
 import datetime
+import os
 
 def bowshock_logger():
     '''creates a logger obj'''
@@ -16,9 +17,10 @@ def nasa_api_key():
     Returns personal api key.
     You can acquire one from here : 
     https://data.nasa.gov/developer/external/planetary/#apply-for-an-api-key
-
+    IMPORTANT: SET YOUR API KEY AS AN ENVIRONMENT VARIABLE.
     '''
-    api_key=''
+
+    api_key = os.environ["NASA_API_KEY"] 
 
     return api_key
 
