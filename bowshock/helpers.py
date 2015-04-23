@@ -42,3 +42,9 @@ def validate_float(*args):
             return True
         else:
             raise ValueError("Expected float for argument")
+
+def validate_iso8601(date_text):
+    try:
+        datetime.datetime.strptime(date_text, '%Y-%m-%dT%H:%M:%S')
+    except ValueError:
+        raise ValueError("Incorrect date format, should be YYYY")
