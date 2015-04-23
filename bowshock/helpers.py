@@ -32,3 +32,5 @@ def validate_float(*args):
     for arg in args:
         if isinstance(arg, float):
             return True
+        else:
+            raise ValueError("Expected float for argument")
