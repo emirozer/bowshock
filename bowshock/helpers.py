@@ -30,6 +30,12 @@ def vali_date(date_text):
     except ValueError:
         raise ValueError("Incorrect date format, should be YYYY-MM-DD")
 
+def validate_year(date_text):
+    try:
+        datetime.datetime.strptime(date_text, '%Y')
+    except ValueError:
+        raise ValueError("Incorrect date format, should be YYYY")
+
 def validate_float(*args):
     for arg in args:
         if isinstance(arg, float):

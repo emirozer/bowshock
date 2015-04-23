@@ -44,4 +44,4 @@ def apod(date=None, concept_tags=None):
     
     logger.warning("Retrieved response from apod endpoint: %s", response.text)
 
-    return response.json
+    return response
