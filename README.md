@@ -10,18 +10,18 @@
 bowshock is an all-in-one wrapper for NASA API's.
 Here is a list of currently supported API's :
 
-	- NASA [Earth API](https://data.nasa.gov/developer/external/planetary/#imagery) 
-	- NASA [APOD API](https://data.nasa.gov/developer/external/planetary/#address)
-	- NASA [Patents API](https://data.nasa.gov/developer/external/planetary/#sounds)
-	- NASA [Earth Temperature Anomalies API](https://data.nasa.gov/developer/external/planetary/#coordinates)
-	- [Asterank API](http://www.asterank.com/api)
-	- [HelioViewer API](http://helioviewer.org/api/docs/v1/)
-	- [Mars Weather API](http://marsweather.ingenology.com/#get_started)
-	- [MODIS API](http://daac.ornl.gov/MODIS/MODIS-menu/modis_webservice.html)
-	- [Skymorph API](http://www.asterank.com/skymorph)
-	- [Star API](http://hacktheuniverse.github.io/star-api/)
-	- [Techport API](https://data.nasa.gov/developer/external/techport/techport-api.pdf)
-	- [PredictTheSky API](http://predictthesky.org/developers.html)
+NASA [Earth API](https://data.nasa.gov/developer/external/planetary/#imagery) 
+NASA [APOD API](https://data.nasa.gov/developer/external/planetary/#address)
+NASA [Patents API](https://data.nasa.gov/developer/external/planetary/#sounds)
+NASA [Earth Temperature Anomalies API](https://data.nasa.gov/developer/external/planetary/#coordinates)
+[Asterank API](http://www.asterank.com/api)
+[HelioViewer API](http://helioviewer.org/api/docs/v1/)
+[Mars Weather API](http://marsweather.ingenology.com/#get_started)
+[MODIS API](http://daac.ornl.gov/MODIS/MODIS-menu/modis_webservice.html)
+[Skymorph API](http://www.asterank.com/skymorph)
+[Star API](http://hacktheuniverse.github.io/star-api/)
+[Techport API](https://data.nasa.gov/developer/external/techport/techport-api.pdf)
+[PredictTheSky API](http://predictthesky.org/developers.html)
 
 ##Install
 
