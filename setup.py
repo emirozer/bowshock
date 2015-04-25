@@ -7,7 +7,7 @@ setup(
     author='Emir Ozer',
     author_email='emirozer@yandex.com',
     url='https://github.com/emirozer/bowshock',
-    description='An all-in-one library for NASA Api\'s',
+    description='An all-in-one library for NASA API\'s',
     long_description=os.path.join(os.path.dirname(__file__), 'README.md'),
     packages=find_packages(exclude=[]),
     install_requires=[
@@ -18,8 +18,10 @@ setup(
         'Development Status :: 4 - Beta',
         'Environment :: Console',
         'Intended Audience :: Developers',
-        'License :: OSI Approved :: BSD License',
+        'License :: OSI Approved :: GNU General Public Licence (GPL)',
         'Operating System :: OS Independent',
         'Programming Language :: Python',
     ],
+    keywords='nasa api wrapper',
+    packages=['bowshock']
 )
