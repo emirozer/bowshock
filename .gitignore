@@ -1,1 +1,4 @@
 bowshock/*.pyc
+bowshock.egg-info/
+build/
+dist/

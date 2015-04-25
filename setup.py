@@ -23,5 +23,4 @@ setup(
         'Programming Language :: Python',
     ],
     keywords='nasa api wrapper',
-    packages=['bowshock']
-)
+    )
