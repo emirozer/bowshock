@@ -9,7 +9,7 @@ def bowshock_logger():
     '''creates a logger obj'''
     
     FORMAT = '%(asctime)-15s %(message)s'
-    logging.basicConfig(format=FORMAT, level=logging.DEBUG)
+    logging.basicConfig(format=FORMAT, level=logging.INFO)
     logger = logging.getLogger('bowshock_logger')
     
     return logger
