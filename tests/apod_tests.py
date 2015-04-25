@@ -2,27 +2,25 @@ import unittest
 import sys
 from time import sleep
 
-sys.path.append("../bowshock/")
-
-from apod import apod
+from bowshock import apod
 
 
 class apod_UnitTests(unittest.TestCase):
     def test_apod_endpoint_full(self):
 
-        r = apod(date="2015-02-02", concept_tags=True)
+        r = apod.apod(date="2015-02-02", concept_tags=True)
         self.assertEqual(r.status_code, 200)
         sleep(2)
 
     def test_apod_endpoint_notags(self):
 
-        r = apod(date="2015-02-02")
+        r = apod.apod(date="2015-02-02")
         self.assertEqual(r.status_code, 200)
         sleep(2)
 
     def test_apod_endpoint_noargs(self):
         # no tags should pass , as no date defaults to today
-        r = apod()
+        r = apod.apod()
         self.assertEqual(r.status_code, 200)
         sleep(2)
 

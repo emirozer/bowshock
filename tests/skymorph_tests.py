@@ -2,15 +2,12 @@ import unittest
 import sys
 from time import sleep
 
-sys.path.append("../bowshock/")
-
-from skymorph import search_orbit, search_position, search_target_obj
-
+from bowshock import skymorph
 
 class skymorph_UnitTests(unittest.TestCase):
     def test_skymorph_object_search(self):
 
-        r = search_target_obj("J99TS7A")
+        r = skymorph.search_target_obj("J99TS7A")
         self.assertEqual(r.status_code, 200)
         sleep(2)
 

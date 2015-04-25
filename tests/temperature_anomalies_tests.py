@@ -2,9 +2,7 @@ import unittest
 import sys
 from time import sleep
 
-sys.path.append("../bowshock/")
-
-from temperature_anomalies import adress, coordinate
+from bowshock import temperature_anomalies
 
 
 class temperatureAnomalies_UnitTests(unittest.TestCase):
@@ -24,13 +22,13 @@ class temperatureAnomalies_UnitTests(unittest.TestCase):
 
     def test_ta_coordinate_endpoint_noend(self):
 
-        r = coordinate(lon=100.3, lat=1.6, begin="1990")
+        r = temperature_anomalies.coordinate(lon=100.3, lat=1.6, begin="1990")
         self.assertEqual(r.status_code, 200)
         sleep(2)
 
     def test_ta_coordinate_endpoint_full(self):
 
-        r = coordinate(lon=100.3, lat=1.6, begin="1990", end="2005")
+        r = temperature_anomalies.coordinate(lon=100.3, lat=1.6, begin="1990", end="2005")
         self.assertEqual(r.status_code, 200)
         sleep(2)
 

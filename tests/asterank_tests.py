@@ -2,15 +2,12 @@ import unittest
 import sys
 from time import sleep
 
-sys.path.append("../bowshock/")
-
-from asterank import asterank
-
+from bowshock import asterank
 
 class asterank_UnitTests(unittest.TestCase):
     def test_asterank_api_full(self):
 
-        r = asterank(
+        r = asterank.asterank(
             query={"e": {"$lt": 0.1},
                    "i": {"$lt": 4},
                    "a": {"$lt": 1.5}},

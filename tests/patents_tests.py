@@ -2,27 +2,24 @@ import unittest
 import sys
 from time import sleep
 
-sys.path.append("../bowshock/")
-
-from patents import patents
-
+from bowshock import patents
 
 class patents_UnitTests(unittest.TestCase):
     def test_patents_endpoint_full(self):
 
-        r = patents(query="temperature", concept_tags=True, limit=5)
+        r = patents.patents(query="temperature", concept_tags=True, limit=5)
         self.assertEqual(r.status_code, 200)
         sleep(2)
 
     def test_patents_endpoint_notags(self):
 
-        r = patents(query="temperature", limit=5)
+        r = patents.patents(query="temperature", limit=5)
         self.assertEqual(r.status_code, 200)
         sleep(2)
 
     def test_patents_endpoint_nolimit(self):
 
-        r = patents(query="temperature")
+        r = patents.patents(query="temperature")
         self.assertEqual(r.status_code, 200)
         sleep(2)
 

@@ -7,7 +7,7 @@ script:
   - python tests/apod_tests.py
   - python tests/asterank_tests.py
   - python tests/earth_tests.py
-  - python tests/helioviewer_tests.yp
+  - python tests/helioviewer_tests.py
   - python tests/maas_tests.py
   - python tests/skymorph_tests.py
   - python tests/star_tests.py
