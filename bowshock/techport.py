@@ -40,7 +40,7 @@ def techport(Id):
     base_url = 'http://techport.nasa.gov/xml-api/'
 
     if not isinstance(Id, str):
-        raise ValueError("The limit arg you provided is not the type of str")
+        raise ValueError("The Id arg you provided is not the type of str")
     else:
         base_url += Id
 
