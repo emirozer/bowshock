@@ -2,9 +2,7 @@
 
 # http://helioviewer.org/api/docs/v1/
 # The Helioviewer Project maintains a set of Public APIs with the goal of improving access to solar and heliospheric datasets to scientists, educators, developers, and the general public. Read below for descriptions of each API endpoint and examples of usage.
-import requests
-
-from helpers import bowshock_logger, validate_iso8601
+from helpers import bowshock_logger, validate_iso8601, dispatch_http_get
 
 logger = bowshock_logger()
 
@@ -84,14 +82,7 @@ def getjp2image(date,
 
     req_url += base_url + "jpip=true"
 
-    logger.warning("Helioviewer API, dispatching request : %s ", req_url)
-
-    response = requests.get(req_url)
-
-    logger.warning("Retrieved response from Helioviewer API: %s",
-                   response.text)
-
-    return response
+    return dispatch_http_get(req_url)
 
 
 def getjp2header(Id):
@@ -122,11 +113,4 @@ def getjp2header(Id):
     else:
         base_url += "id=" + str(Id)
 
-    logger.warning("Helioviewer API, dispatching request : %s ", base_url)
-
-    response = requests.get(base_url)
-
-    logger.warning("Retrieved response from Helioviewer API: %s",
-                   response.text)
-
-    return response
+    return dispatch_http_get(base_url)

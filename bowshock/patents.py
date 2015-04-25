@@ -2,9 +2,7 @@
 # Through partnerships and licensing agreements with industry, 
 # these patents ensure that NASAs investments in pioneering research find secondary uses that benefit the economy
 # create jobs, and improve quality of life. This endpoint provides structured, searchable developer access to NASAs patents that have been curated to support technology transfer.
-
-import requests
-from helpers import nasa_api_key, bowshock_logger
+from helpers import nasa_api_key, bowshock_logger, dispatch_http_get
 
 logger = bowshock_logger()
 
@@ -51,11 +49,4 @@ def patents(query=None, concept_tags=None, limit=None):
 
     req_url = base_url + "api_key=" + nasa_api_key()
 
-    logger.warning("patents endpoint, dispatching request : %s ", req_url)
-
-    response = requests.get(req_url)
-
-    logger.warning("Retrieved response from patents endpoint: %s",
-                   response.text)
-
-    return response
+    return dispatch_http_get(req_url)

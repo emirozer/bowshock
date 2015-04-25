@@ -2,10 +2,9 @@
 # How much warmer (or cooler) is your hometown? This endpoint reports local temperature anomalies from the 
 # Goddard Institute for Space Studies Surface Temperature Analysis via the New Scientist web application to explore global temperature anomalies. 
 # This endpoint restructures the query and response to correspond to other APIs on api.nasa.gov. The developer supplies a location and date range, and the returned object is a list of dictionaries that is ready for visualization in the d3 framework.
-import requests
 import decimal
 
-from helpers import nasa_api_key, bowshock_logger, validate_year, validate_float
+from helpers import nasa_api_key, bowshock_logger, validate_year, validate_float, dispatch_http_get
 
 logger = bowshock_logger()
 
@@ -59,14 +58,7 @@ def adress(adress=None, begin=None, end=None):
 
     req_url = base_url + "api_key=" + nasa_api_key()
 
-    logger.warning("temp/adress endpoint, dispatching request : %s ", req_url)
-
-    response = requests.get(req_url)
-
-    logger.warning("Retrieved response from temp/adress endpoint: %s",
-                   response.text)
-
-    return response
+    return dispatch_http_get(req_url)
 
 
 def coordinate(lon=None, lat=None, begin=None, end=None):
@@ -130,12 +122,4 @@ def coordinate(lon=None, lat=None, begin=None, end=None):
             raise ValueError("Incorrect end year format, should be YYYY")
     req_url = base_url + "api_key=" + nasa_api_key()
 
-    logger.warning("temp/coordinate endpoint, dispatching request : %s ",
-                   req_url)
-
-    response = requests.get(req_url)
-
-    logger.warning("Retrieved response from temp/coordinate endpoint: %s",
-                   response.text)
-
-    return response
+    return dispatch_http_get(req_url)

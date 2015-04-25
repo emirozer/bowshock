@@ -4,11 +4,9 @@
 # The {MAAS} API is an open source REST API built to help make it easier and more efficient to build interactive applications that want to utilize the wealth of weather data being transmitted by the Curiosity Rover on Mars. Our API is built upon the REMS (Rover Environmental Monitoring Station) data provided by the Centro de Astrobiologia (CSIC-INTA).
 # This API is built on Django and Django REST Framework.
 # Our implementation of the API is available at marsweather.ingenology.com.
-
-import requests
 import decimal
 
-from helpers import nasa_api_key, bowshock_logger, vali_date, validate_float
+from helpers import nasa_api_key, bowshock_logger, vali_date, validate_float, dispatch_http_get
 
 logger = bowshock_logger()
 
@@ -41,13 +39,7 @@ def maas_latest():
     '''
     base_url = 'http://marsweather.ingenology.com/v1/latest/'
 
-    logger.warning("MAAS API, dispatching request : %s ", base_url)
-
-    response = requests.get(base_url)
-
-    logger.warning("Retrieved response from MAAS: %s", response.text)
-
-    return response
+    return dispatch_http_get(base_url)
 
 
 def maas_archive(begin, end):
@@ -72,10 +64,4 @@ def maas_archive(begin, end):
     except:
         raise ValueError("Incorrect date format, should be YYYY-MM-DD")
 
-    logger.warning("MAAS API, dispatching request : %s ", base_url)
-
-    response = requests.get(base_url)
-
-    logger.warning("Retrieved response from MAAS: %s", response.text)
-
-    return response
+    return dispatch_http_get(base_url)

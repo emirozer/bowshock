@@ -1,8 +1,7 @@
 # One of the most popular websites at NASA is the Astronomy Picture of the Day. In fact, this website is one of the most popular websites across all federal agencies. 
 # It has the popular appeal of a Justin Bieber video. This endpoint structures the APOD imagery and associated metadata so that it can be repurposed for other applications. 
 # In addition, if the concept_tags parameter is set to True, then keywords derived from the image explanation are returned. These keywords could be used as auto-generated hashtags for twitter or instagram feeds; but generally help with discoverability of relevant imagery.
-import requests
-from helpers import nasa_api_key, bowshock_logger, vali_date
+from helpers import nasa_api_key, bowshock_logger, vali_date, dispatch_http_get
 
 logger = bowshock_logger()
 
@@ -36,10 +35,4 @@ def apod(date=None, concept_tags=None):
 
     req_url = base_url + "api_key=" + nasa_api_key()
 
-    logger.warning("Apod endpoint, dispatching request : %s ", req_url)
-
-    response = requests.get(req_url)
-
-    logger.warning("Retrieved response from apod endpoint: %s", response.text)
-
-    return response
+    return dispatch_http_get(req_url)

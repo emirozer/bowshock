@@ -3,10 +3,8 @@
 # and their own calculations.
 
 #The database currently runs on mongodb and queries must adhere to mongo's json format for a 'find' operation.
-
-import requests
 import json
-from helpers import bowshock_logger
+from helpers import bowshock_logger, dispatch_http_get
 
 logger = bowshock_logger()
 
@@ -47,10 +45,4 @@ def asterank(query=None, limit=None):
     else:
         raise ValueError("limit= param is missing, expecting int")
 
-    logger.warning("Asterank API, dispatching request : %s ", base_url)
-
-    response = requests.get(base_url)
-
-    logger.warning("Retrieved response from Asterank API: %s", response.text)
-
-    return response
+    return dispatch_http_get(base_url)

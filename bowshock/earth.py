@@ -6,11 +6,9 @@
 # If False is supplied to the cloud_score parameter, then no keypair is returned. 
 # If True is supplied, then a keypair will always be returned, even if the backend algorithm is not able to calculate a score. 
 #Note that this is a rough calculation, mainly used to filter out exceedingly cloudy images.
-
-import requests
 import decimal
 
-from helpers import nasa_api_key, bowshock_logger, vali_date, validate_float
+from helpers import nasa_api_key, bowshock_logger, vali_date, validate_float, dispatch_http_get
 
 logger = bowshock_logger()
 
@@ -76,19 +74,12 @@ def imagery(lon=None, lat=None, dim=None, date=None, cloud_score=None):
 
     req_url = base_url + "api_key=" + nasa_api_key()
 
-    logger.warning("Imagery endpoint, dispatching request : %s ", req_url)
+    return dispatch_http_get(req_url)
 
-    response = requests.get(req_url)
-
-    logger.warning("Retrieved response from imagery endpoint: %s",
-                   response.text)
-
-    return response
-
-# This endpoint retrieves the date-times and asset names for available imagery for a supplied location. 
-# The satellite passes over each point on earth roughly once every sixteen days. 
-# This is an amazing visualization of the acquisition pattern for Landsat 8 imagery. 
-# The objective of this endpoint is primarily to support the use of the imagery endpoint.
+    # This endpoint retrieves the date-times and asset names for available imagery for a supplied location. 
+    # The satellite passes over each point on earth roughly once every sixteen days. 
+    # This is an amazing visualization of the acquisition pattern for Landsat 8 imagery. 
+    # The objective of this endpoint is primarily to support the use of the imagery endpoint.
 
 
 def assets(lon=None, lat=None, begin=None, end=None):
@@ -151,11 +142,4 @@ def assets(lon=None, lat=None, begin=None, end=None):
 
     req_url = base_url + "api_key=" + nasa_api_key()
 
-    logger.warning("assets endpoint, dispatching request : %s ", req_url)
-
-    response = requests.get(req_url)
-
-    logger.warning("Retrieved response from assets endpoint: %s",
-                   response.text)
-
-    return response
+    return dispatch_http_get(req_url)
