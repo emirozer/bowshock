@@ -2,6 +2,7 @@
 ===========
 [![Downloads](https://pypip.in/download/bowshock/badge.svg)](https://pypi.python.org/pypi/bowshock/)
 [![Latest Version](https://pypip.in/version/bowshock/badge.svg)](https://pypi.python.org/pypi/bowshock/)
+[![Build Status](https://travis-ci.org/emirozer/bowshock.svg)](https://travis-ci.org/emirozer/bowshock)
 
 ===========
 
