@@ -4,11 +4,9 @@
 
 #The database currently runs on mongodb and queries must adhere to mongo's json format for a 'find' operation.
 
-
 import requests
 import json
 from helpers import bowshock_logger
-
 
 logger = bowshock_logger()
 
@@ -27,32 +25,32 @@ def asterank(query=None, limit=None):
     /api/asterank?query={"e":{"$lt":0.1},"i":{"$lt":4},"a":{"$lt":1.5}}&limit=1
 
     '''
-    
+
     base_url = "http://asterank.com/api/asterank?"
-    
+
     if query:
         try:
             query = json.dumps(query)
-            
+
             base_url += "query=" + query + "&"
         except:
             raise ValueError("query= param is not valid json.")
     else:
-        raise ValueError("query= param is missing, expecting json data format.")
+        raise ValueError(
+            "query= param is missing, expecting json data format.")
 
     if limit:
         if not isinstance(limit, int):
-            logger.error("The limit arg you provided is not the type of int, ignoring it")
+            logger.error(
+                "The limit arg you provided is not the type of int, ignoring it")
         base_url += "limit=" + str(limit)
     else:
         raise ValueError("limit= param is missing, expecting int")
-    
+
     logger.warning("Asterank API, dispatching request : %s ", base_url)
 
     response = requests.get(base_url)
 
-    
     logger.warning("Retrieved response from Asterank API: %s", response.text)
 
     return response
-

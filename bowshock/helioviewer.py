@@ -8,7 +8,13 @@ from helpers import bowshock_logger, validate_iso8601
 
 logger = bowshock_logger()
 
-def getjp2image(date, sourceId=None, observatory=None, instrument=None, detector=None, measurement=None):
+
+def getjp2image(date,
+                sourceId=None,
+                observatory=None,
+                instrument=None,
+                detector=None,
+                measurement=None):
     '''
     Helioviewer.org and JHelioviewer operate off of JPEG2000 formatted image data generated from science-quality FITS files. Use the APIs below to interact directly with these intermediary JPEG2000 files.
     
@@ -31,7 +37,7 @@ def getjp2image(date, sourceId=None, observatory=None, instrument=None, detector
 
     EXAMPLE: http://helioviewer.org/api/v1/getJP2Image/?date=2014-01-01T23:59:59Z&sourceId=14&jpip=true
     '''
-    
+
     base_url = 'http://helioviewer.org/api/v1/getJP2Image/?'
     req_url = ''
 
@@ -41,23 +47,26 @@ def getjp2image(date, sourceId=None, observatory=None, instrument=None, detector
             date += 'Z'
         base_url += 'date=' + date
     except:
-        raise ValueError("Your date input is not in iso8601 format. ex: 2014-01-01T23:59:59")
+        raise ValueError(
+            "Your date input is not in iso8601 format. ex: 2014-01-01T23:59:59")
 
     if sourceId:
         if not isinstance(sourceId, int):
             logger.error("The sourceId argument should be an int, ignoring it")
         else:
             base_url += "sourceId=" + str(sourceId) + "&"
-    
+
     if observatory:
         if not isinstance(observatory, str):
-            logger.error("The observatory argument should be a str, ignoring it")
+            logger.error(
+                "The observatory argument should be a str, ignoring it")
         else:
             base_url += "observatory=" + observatory + "&"
 
     if instrument:
         if not isinstance(instrument, str):
-            logger.error("The instrument argument should be a str, ignoring it")
+            logger.error(
+                "The instrument argument should be a str, ignoring it")
         else:
             base_url += "instrument=" + instrument + "&"
     if detector:
@@ -65,25 +74,26 @@ def getjp2image(date, sourceId=None, observatory=None, instrument=None, detector
             logger.error("The detector argument should be a str, ignoring it")
         else:
             base_url += "detector=" + detector + "&"
-    
+
     if measurement:
         if not isinstance(measurement, str):
-            logger.error("The measurement argument should be a str, ignoring it")
+            logger.error(
+                "The measurement argument should be a str, ignoring it")
         else:
             base_url += "measurement=" + detector + "&"
-    
+
     req_url += base_url + "jpip=true"
 
     logger.warning("Helioviewer API, dispatching request : %s ", req_url)
 
     response = requests.get(req_url)
-    
-    logger.warning("Retrieved response from Helioviewer API: %s", response.text)
+
+    logger.warning("Retrieved response from Helioviewer API: %s",
+                   response.text)
 
     return response
 
 
-        
 def getjp2header(Id):
     '''
     GET /api/v1/getJP2Header/
@@ -106,7 +116,7 @@ def getjp2header(Id):
     http://helioviewer.org/api/v1/getJP2Header/?id=7654321
     '''
     base_url = 'http://helioviewer.org/api/v1/getJP2Header/?'
-    
+
     if not isinstance(Id, int):
         raise ValueError("The Id argument should be an int, ignoring it")
     else:
@@ -115,8 +125,8 @@ def getjp2header(Id):
     logger.warning("Helioviewer API, dispatching request : %s ", base_url)
 
     response = requests.get(base_url)
-    
-    logger.warning("Retrieved response from Helioviewer API: %s", response.text)
+
+    logger.warning("Retrieved response from Helioviewer API: %s",
+                   response.text)
 
     return response
-

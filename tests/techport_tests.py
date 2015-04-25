@@ -8,9 +8,8 @@ from techport import techport
 
 
 class techport_UnitTests(unittest.TestCase):
-        
     def test_techport_api(self):
-        
+
         r = techport(Id="4795")
         self.assertEqual(r.status_code, 200)
         sleep(2)

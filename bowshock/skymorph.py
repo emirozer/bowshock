@@ -3,8 +3,8 @@
 #This API wraps NASA's SkyMorph archive in a RESTful JSON interface. Currently, it provides observation and image data from the NEAT survey.
 from helpers import bowshock_logger, dispatch_http_get
 
-
 logger = bowshock_logger()
+
 
 def search_target_obj(target):
     '''
@@ -14,15 +14,14 @@ def search_target_obj(target):
     target	Target object (lookup in MPC).
     '''
     base_url = "http://asterank.com/api/skymorph/search?"
-    
-    
+
     if not isinstance(target, str):
         raise ValueError("The target arg you provided is not the type of str")
     else:
         base_url += "target=" + target
 
-    
     return dispatch_http_get(base_url)
+
 
 def search_orbit(**kwargs):
     '''
@@ -39,13 +38,13 @@ def search_orbit(**kwargs):
     H	Absolute magnitude
 
     '''
-    
+
     base_url = "http://asterank.com/api/skymorph/search_orbit?"
-    
+
     for key in kwargs:
         base_url += str(key) + "=" + kwargs[key] + "&"
-            
-    # remove the unnecessary & at the end
+
+        # remove the unnecessary & at the end
     base_url = base_url[:-1]
 
     return dispatch_http_get(base_url)
@@ -66,13 +65,13 @@ def search_position(**kwargs):
     H	Absolute magnitude
 
     '''
-    
+
     base_url = "http://asterank.com/api/skymorph/search_position?"
-    
+
     for key in kwargs:
         base_url += str(key) + "=" + kwargs[key] + "&"
-            
-    # remove the unnecessary & at the end
+
+        # remove the unnecessary & at the end
     base_url = base_url[:-1]
 
     return dispatch_http_get(base_url)

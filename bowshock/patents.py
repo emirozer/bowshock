@@ -8,6 +8,7 @@ from helpers import nasa_api_key, bowshock_logger
 
 logger = bowshock_logger()
 
+
 def patents(query=None, concept_tags=None, limit=None):
     '''
     HTTP REQUEST
@@ -28,7 +29,6 @@ def patents(query=None, concept_tags=None, limit=None):
     '''
     base_url = "http://api.data.gov/nasa/patents/content?"
 
-
     if not query:
         raise ValueError("search query is missing, which is mandatory.")
     elif not isinstance(query, str):
@@ -37,23 +37,25 @@ def patents(query=None, concept_tags=None, limit=None):
         except:
             raise ValueError("query has to be type of string")
     else:
-        base_url += "query="+ query + "&"
+        base_url += "query=" + query + "&"
 
     if concept_tags == True:
         base_url += "concept_tags=True" + "&"
 
     if limit:
         if not isinstance(limit, int):
-            logger.error("The limit arg you provided is not the type of int, ignoring it")
+            logger.error(
+                "The limit arg you provided is not the type of int, ignoring it")
 
         base_url += "limit=" + str(limit) + "&"
 
     req_url = base_url + "api_key=" + nasa_api_key()
-    
+
     logger.warning("patents endpoint, dispatching request : %s ", req_url)
 
     response = requests.get(req_url)
-    
-    logger.warning("Retrieved response from patents endpoint: %s", response.text)
+
+    logger.warning("Retrieved response from patents endpoint: %s",
+                   response.text)
 
     return response

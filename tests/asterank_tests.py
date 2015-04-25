@@ -8,10 +8,13 @@ from asterank import asterank
 
 
 class asterank_UnitTests(unittest.TestCase):
-        
     def test_asterank_api_full(self):
-        
-        r = asterank(query={"e":{"$lt":0.1},"i":{"$lt":4},"a":{"$lt":1.5}},limit=1)
+
+        r = asterank(
+            query={"e": {"$lt": 0.1},
+                   "i": {"$lt": 4},
+                   "a": {"$lt": 1.5}},
+            limit=1)
         self.assertEqual(r.status_code, 200)
         sleep(2)
 

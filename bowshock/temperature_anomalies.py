@@ -7,8 +7,8 @@ import decimal
 
 from helpers import nasa_api_key, bowshock_logger, validate_year, validate_float
 
-
 logger = bowshock_logger()
+
 
 def adress(adress=None, begin=None, end=None):
     '''
@@ -28,20 +28,21 @@ def adress(adress=None, begin=None, end=None):
     https://api.data.gov/nasa/planetary/earth/temperature/address?text=1800 F Street, NW, Washington DC&begin=1990
     '''
     base_url = "http://api.data.gov/nasa/planetary/earth/temperature/adress?"
-    
+
     if not adress:
-        raise ValueError("adress is missing, which is mandatory. example : 1800 F Street, NW, Washington DC")
+        raise ValueError(
+            "adress is missing, which is mandatory. example : 1800 F Street, NW, Washington DC")
     elif not isinstance(adress, str):
         try:
             adress = str(adress)
         except:
             raise ValueError("adress has to be type of string")
     else:
-        base_url += "adress="+ adress + "&"
-        
+        base_url += "adress=" + adress + "&"
 
     if not begin:
-        raise ValueError("Begin year is missing, which is mandatory. Format : YYYY")
+        raise ValueError(
+            "Begin year is missing, which is mandatory. Format : YYYY")
     else:
         try:
             validate_year(begin)
@@ -55,15 +56,15 @@ def adress(adress=None, begin=None, end=None):
             base_url += "end=" + end + "&"
         except:
             raise ValueError("Incorrect end year format, should be YYYY")
-            
-    
+
     req_url = base_url + "api_key=" + nasa_api_key()
-    
+
     logger.warning("temp/adress endpoint, dispatching request : %s ", req_url)
 
     response = requests.get(req_url)
-    
-    logger.warning("Retrieved response from temp/adress endpoint: %s", response.text)
+
+    logger.warning("Retrieved response from temp/adress endpoint: %s",
+                   response.text)
 
     return response
 
@@ -89,9 +90,10 @@ def coordinate(lon=None, lat=None, begin=None, end=None):
 
     '''
     base_url = "http://api.data.gov/nasa/planetary/earth/temperature/coords?"
-    
+
     if not lon or not lat:
-        raise ValueError("temp/coordinate endpoint expects lat and lon, type has to be float. Call the method with keyword args. Ex : lon=100.75, lat=1.5")
+        raise ValueError(
+            "temp/coordinate endpoint expects lat and lon, type has to be float. Call the method with keyword args. Ex : lon=100.75, lat=1.5")
     else:
         try:
             validate_float(lon, lat)
@@ -107,11 +109,12 @@ def coordinate(lon=None, lat=None, begin=None, end=None):
             lat = decimal.Decimal(lat)
             base_url += "lon=" + str(lon) + "&" + "lat=" + str(lat) + "&"
         except:
-            raise ValueError("temp/coordinate endpoint expects lat and lon, type has to be float. Call the method with keyword args. Ex : lon=100.75, lat=1.5")
-    
-            
+            raise ValueError(
+                "temp/coordinate endpoint expects lat and lon, type has to be float. Call the method with keyword args. Ex : lon=100.75, lat=1.5")
+
     if not begin:
-        raise ValueError("Begin year is missing, which is mandatory. Format : YYYY")
+        raise ValueError(
+            "Begin year is missing, which is mandatory. Format : YYYY")
     else:
         try:
             validate_year(begin)
@@ -126,11 +129,13 @@ def coordinate(lon=None, lat=None, begin=None, end=None):
         except:
             raise ValueError("Incorrect end year format, should be YYYY")
     req_url = base_url + "api_key=" + nasa_api_key()
-    
-    logger.warning("temp/coordinate endpoint, dispatching request : %s ", req_url)
+
+    logger.warning("temp/coordinate endpoint, dispatching request : %s ",
+                   req_url)
 
     response = requests.get(req_url)
-    
-    logger.warning("Retrieved response from temp/coordinate endpoint: %s", response.text)
+
+    logger.warning("Retrieved response from temp/coordinate endpoint: %s",
+                   response.text)
 
     return response

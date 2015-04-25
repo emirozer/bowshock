@@ -8,39 +8,42 @@ from earth import imagery, assets
 
 
 class earth_UnitTests(unittest.TestCase):
-        
     def test_imagery_endpoint_full(self):
-        
-        r = imagery(lon=100.75, lat=1.6, dim=0.0025, date="2015-02-02", cloud_score=True)
+
+        r = imagery(lon=100.75,
+                    lat=1.6,
+                    dim=0.0025,
+                    date="2015-02-02",
+                    cloud_score=True)
         self.assertEqual(r.status_code, 200)
         sleep(2)
 
     def test_imagery_endpoint_nodim(self):
-        
+
         r = imagery(lon=100.75, lat=1.6, date="2015-02-02", cloud_score=True)
         self.assertEqual(r.status_code, 200)
         sleep(2)
 
     def test_imagery_endpoint_nocloudscore(self):
-        
+
         r = imagery(lon=100.75, lat=1.6, date="2015-02-02")
         self.assertEqual(r.status_code, 200)
         sleep(2)
 
     def test_imagery_endpoint_nodate(self):
-        
+
         r = imagery(lon=100.75, lat=1.6)
         self.assertEqual(r.status_code, 200)
         sleep(2)
 
     def test_assets_endpoint_noenddate(self):
-        
+
         r = assets(lon=100.75, lat=1.6, begin="2015-02-02")
         self.assertEqual(r.status_code, 200)
         sleep(2)
 
     def test_assets_endpoint_full(self):
-        
+
         r = assets(lon=100.75, lat=1.6, begin="2015-02-02", end="2015-02-10")
         self.assertEqual(r.status_code, 200)
         sleep(2)

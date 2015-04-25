@@ -5,7 +5,6 @@
 # This API is built on Django and Django REST Framework.
 # Our implementation of the API is available at marsweather.ingenology.com.
 
-
 import requests
 import decimal
 
@@ -41,14 +40,15 @@ def maas_latest():
 
     '''
     base_url = 'http://marsweather.ingenology.com/v1/latest/'
-    
+
     logger.warning("MAAS API, dispatching request : %s ", base_url)
 
     response = requests.get(base_url)
-    
+
     logger.warning("Retrieved response from MAAS: %s", response.text)
 
     return response
+
 
 def maas_archive(begin, end):
     '''
@@ -63,7 +63,7 @@ def maas_archive(begin, end):
     ]
 }
     '''
-    
+
     base_url = 'http://marsweather.ingenology.com/v1/archive/?'
     try:
         vali_date(begin)
@@ -71,11 +71,11 @@ def maas_archive(begin, end):
         base_url += 'terrestrial_date_start=' + begin + "&" + 'terrestrial_date_end=' + end
     except:
         raise ValueError("Incorrect date format, should be YYYY-MM-DD")
-        
+
     logger.warning("MAAS API, dispatching request : %s ", base_url)
 
     response = requests.get(base_url)
-    
+
     logger.warning("Retrieved response from MAAS: %s", response.text)
 
     return response

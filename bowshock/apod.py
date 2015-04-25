@@ -4,7 +4,6 @@
 import requests
 from helpers import nasa_api_key, bowshock_logger, vali_date
 
-
 logger = bowshock_logger()
 
 
@@ -36,12 +35,11 @@ def apod(date=None, concept_tags=None):
         base_url += "concept_tags=True" + "&"
 
     req_url = base_url + "api_key=" + nasa_api_key()
-    
+
     logger.warning("Apod endpoint, dispatching request : %s ", req_url)
 
     response = requests.get(req_url)
 
-    
     logger.warning("Retrieved response from apod endpoint: %s", response.text)
 
     return response

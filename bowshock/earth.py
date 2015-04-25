@@ -7,12 +7,10 @@
 # If True is supplied, then a keypair will always be returned, even if the backend algorithm is not able to calculate a score. 
 #Note that this is a rough calculation, mainly used to filter out exceedingly cloudy images.
 
-
 import requests
 import decimal
 
 from helpers import nasa_api_key, bowshock_logger, vali_date, validate_float
-
 
 logger = bowshock_logger()
 
@@ -34,11 +32,12 @@ def imagery(lon=None, lat=None, dim=None, date=None, cloud_score=None):
     # https://api.data.gov/nasa/planetary/earth/imagery?lon=100.75&lat=1.5&date=2014-02-01&cloud_score=True&api_key=DEMO_KEY
 
     '''
-    
+
     base_url = "http://api.data.gov/nasa/planetary/earth/imagery?"
-    
+
     if not lon or not lat:
-        raise ValueError("imagery endpoint expects lat and lon, type has to be float. Call the method with keyword args. Ex : lon=100.75, lat=1.5")
+        raise ValueError(
+            "imagery endpoint expects lat and lon, type has to be float. Call the method with keyword args. Ex : lon=100.75, lat=1.5")
     else:
         try:
             validate_float(lon, lat)
@@ -54,8 +53,9 @@ def imagery(lon=None, lat=None, dim=None, date=None, cloud_score=None):
             lat = decimal.Decimal(lat)
             base_url += "lon=" + str(lon) + "&" + "lat=" + str(lat) + "&"
         except:
-            raise ValueError("imagery endpoint expects lat and lon, type has to be float. Call the method with keyword args. Ex : lon=100.75, lat=1.5")
-            
+            raise ValueError(
+                "imagery endpoint expects lat and lon, type has to be float. Call the method with keyword args. Ex : lon=100.75, lat=1.5")
+
     if dim:
         try:
             validate_float(dim)
@@ -70,22 +70,20 @@ def imagery(lon=None, lat=None, dim=None, date=None, cloud_score=None):
             base_url += "date=" + date + "&"
         except:
             raise ValueError("Incorrect date format, should be YYYY-MM-DD")
-            
+
     if cloud_score == True:
         base_url += "cloud_score=True" + "&"
 
     req_url = base_url + "api_key=" + nasa_api_key()
-    
+
     logger.warning("Imagery endpoint, dispatching request : %s ", req_url)
 
     response = requests.get(req_url)
 
-    
-    logger.warning("Retrieved response from imagery endpoint: %s", response.text)
+    logger.warning("Retrieved response from imagery endpoint: %s",
+                   response.text)
 
     return response
-
-
 
 # This endpoint retrieves the date-times and asset names for available imagery for a supplied location. 
 # The satellite passes over each point on earth roughly once every sixteen days. 
@@ -112,9 +110,10 @@ def assets(lon=None, lat=None, begin=None, end=None):
     https://api.data.gov/nasa/planetary/earth/assets?lon=100.75&lat=1.5&begin=2014-02-01&api_key=DEMO_KEY
     '''
     base_url = "http://api.data.gov/nasa/planetary/earth/assets?"
-    
+
     if not lon or not lat:
-        raise ValueError("assets endpoint expects lat and lon, type has to be float. Call the method with keyword args. Ex : lon=100.75, lat=1.5")
+        raise ValueError(
+            "assets endpoint expects lat and lon, type has to be float. Call the method with keyword args. Ex : lon=100.75, lat=1.5")
     else:
         try:
             validate_float(lon, lat)
@@ -130,10 +129,12 @@ def assets(lon=None, lat=None, begin=None, end=None):
             lat = decimal.Decimal(lat)
             base_url += "lon=" + str(lon) + "&" + "lat=" + str(lat) + "&"
         except:
-            raise ValueError("assets endpoint expects lat and lon, type has to be float. Call the method with keyword args. Ex : lon=100.75, lat=1.5")
-    
+            raise ValueError(
+                "assets endpoint expects lat and lon, type has to be float. Call the method with keyword args. Ex : lon=100.75, lat=1.5")
+
     if not begin:
-        raise ValueError("Begin date is missing, which is mandatory. Format : YYYY-MM-DD")
+        raise ValueError(
+            "Begin date is missing, which is mandatory. Format : YYYY-MM-DD")
     else:
         try:
             vali_date(begin)
@@ -141,21 +142,20 @@ def assets(lon=None, lat=None, begin=None, end=None):
         except:
             raise ValueError("Incorrect date format, should be YYYY-MM-DD")
 
-
     if end:
         try:
             vali_date(end)
             base_url += "end=" + end + "&"
         except:
             raise ValueError("Incorrect date format, should be YYYY-MM-DD")
-            
-    
+
     req_url = base_url + "api_key=" + nasa_api_key()
-    
+
     logger.warning("assets endpoint, dispatching request : %s ", req_url)
 
     response = requests.get(req_url)
-    
-    logger.warning("Retrieved response from assets endpoint: %s", response.text)
+
+    logger.warning("Retrieved response from assets endpoint: %s",
+                   response.text)
 
     return response

@@ -6,8 +6,9 @@ sys.path.append("../bowshock/")
 
 from temperature_anomalies import adress, coordinate
 
+
 class temperatureAnomalies_UnitTests(unittest.TestCase):
-     
+
     # ENDPOINTS NOT WORKING
     #def test_ta_adress_endpoint_noend(self):
     #    
@@ -22,17 +23,17 @@ class temperatureAnomalies_UnitTests(unittest.TestCase):
     #    sleep(2)
 
     def test_ta_coordinate_endpoint_noend(self):
-        
+
         r = coordinate(lon=100.3, lat=1.6, begin="1990")
         self.assertEqual(r.status_code, 200)
         sleep(2)
 
     def test_ta_coordinate_endpoint_full(self):
-        
+
         r = coordinate(lon=100.3, lat=1.6, begin="1990", end="2005")
         self.assertEqual(r.status_code, 200)
         sleep(2)
-        
+
 
 if __name__ == "__main__":
     # Build the test suite

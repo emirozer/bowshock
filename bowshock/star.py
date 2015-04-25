@@ -2,6 +2,7 @@
 
 from helpers import dispatch_http_get
 
+
 def stars():
     '''
     This endpoint gets you a list of all stars in json
@@ -10,7 +11,7 @@ def stars():
     base_url = "http://star-api.herokuapp.com/api/v1/stars"
 
     return dispatch_http_get(base_url)
-    
+
 
 def search_star(star):
     '''
@@ -20,7 +21,7 @@ def search_star(star):
     '''
 
     base_url = "http://star-api.herokuapp.com/api/v1/stars/"
-    
+
     if not isinstance(star, str):
         raise ValueError("The star arg you provided is not the type of str")
     else:
@@ -35,7 +36,7 @@ def exoplanets():
     '''
 
     base_url = "http://star-api.herokuapp.com/api/v1/exo_planets"
-    
+
     return dispatch_http_get(base_url)
 
 
@@ -47,9 +48,10 @@ def search_exoplanet(exoplanet):
     '''
 
     base_url = "http://star-api.herokuapp.com/api/v1/exo_planets/"
-    
+
     if not isinstance(exoplanet, str):
-        raise ValueError("The exoplanet arg you provided is not the type of str")
+        raise ValueError(
+            "The exoplanet arg you provided is not the type of str")
     else:
         base_url += exoplanet
 
@@ -62,8 +64,9 @@ def local_group_of_galaxies():
     '''
 
     base_url = "http://star-api.herokuapp.com/api/v1/local_groups"
-    
+
     return dispatch_http_get(base_url)
+
 
 def search_local_galaxies(galaxy):
     '''
@@ -73,14 +76,13 @@ def search_local_galaxies(galaxy):
     '''
 
     base_url = "http://star-api.herokuapp.com/api/v1/local_groups/"
-    
+
     if not isinstance(galaxy, str):
         raise ValueError("The galaxy arg you provided is not the type of str")
     else:
         base_url += galaxy
 
     return dispatch_http_get(base_url)
-
 
 
 def star_clusters():
@@ -101,7 +103,7 @@ def search_star_cluster(cluster):
     '''
 
     base_url = "http://star-api.herokuapp.com/api/v1/open_cluster/"
-    
+
     if not isinstance(cluster, str):
         raise ValueError("The cluster arg you provided is not the type of str")
     else:

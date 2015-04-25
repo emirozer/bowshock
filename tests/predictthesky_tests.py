@@ -8,12 +8,12 @@ from predictthesky import space_events
 
 
 class predictthesky_UnitTests(unittest.TestCase):
-        
     def test_spaceevents_endpoint_latlon(self):
-        
+
         r = space_events(lon=100.75, lat=1.5)
         self.assertEqual(r.status_code, 200)
         sleep(2)
+
 
 if __name__ == "__main__":
 
