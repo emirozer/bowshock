@@ -1,0 +1,23 @@
+language: python
+
+install:
+  - "pip install -r requirements.txt"
+
+script:
+  - python tests/apod_tests.py
+  - python tests/asterank_tests.py
+  - python tests/earth_tests.py
+  - python tests/helioviewer_tests.yp
+  - python tests/maas_tests.py
+  - python tests/skymorph_tests.py
+  - python tests/star_tests.py
+  - python tests/techport_tests.py
+  - python tests/temperature_anomalies_tests.py
+  
+
+notifications:
+  email: false
+
+branches:
+  only:
+    - master
