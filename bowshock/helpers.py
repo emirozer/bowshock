@@ -1,6 +1,9 @@
+import requests
 import logging
 import datetime
 import os
+
+
 
 def bowshock_logger():
     '''creates a logger obj'''
@@ -11,6 +14,17 @@ def bowshock_logger():
     
     return logger
 
+logger = bowshock_logger()
+
+def dispatch_http_get(url):
+    
+    logger.warning("Dispatching HTTP GET Request : %s ", url)
+
+    response = requests.get(url)
+    
+    logger.warning("Retrieved response: %s", response.text)
+
+    return response
 
 def nasa_api_key():
     '''

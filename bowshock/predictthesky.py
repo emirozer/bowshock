@@ -10,10 +10,9 @@
 # Method	Route	Arguments
 # GET	/events/all	lat, lon, elevation, limit, date
 # GET	/event/<category>	lat, lon, elevation, limit, date
-import requests
 import decimal
 
-from helpers import bowshock_logger, validate_iso8601, validate_float
+from helpers import bowshock_logger, validate_iso8601, validate_float, dispatch_http_get
 
 logger = bowshock_logger()
 
@@ -26,10 +25,10 @@ def space_events(lon=None, lat=None, limit=None, date=None):
     date expects an ISO 8601 formatted date. (Optional)
     '''
     
-    base_url = 'http://api.predictthesky.org'
+    base_url = 'http://api.predictthesky.org/?'
     
     if not lon or not lat:
-        raise ValueError("imagery endpoint expects lat and lon, type has to be float. Call the method with keyword args. Ex : lon=100.75, lat=1.5")
+        raise ValueError("space_events endpoint expects lat and lon, type has to be float. Call the method with keyword args. Ex : lon=100.75, lat=1.5")
     else:
         try:
             validate_float(lon, lat)
@@ -43,25 +42,21 @@ def space_events(lon=None, lat=None, limit=None, date=None):
             # Thus using decimal to str transition is more reliant
             lon = decimal.Decimal(lon)
             lat = decimal.Decimal(lat)
-            base_url += "lon=" + str(lon) + "&" + "lat=" + str(lat) + "&"
+            base_url += "lon=" + str(lon) + "&" + "lat=" + str(lat)
         except:
-            raise ValueError("imagery endpoint expects lat and lon, type has to be float. Call the method with keyword args. Ex : lon=100.75, lat=1.5")
+            raise ValueError("space_events endpoint expects lat and lon, type has to be float. Call the method with keyword args. Ex : lon=100.75, lat=1.5")
 
     if date:
          try:
              validate_iso8601(date)
-             base_url += 'date=' + date
-        except:
+             base_url += "&" + 'date=' + date
+         except:
             raise ValueError("Your date input is not in iso8601 format. ex: 2014-01-01T23:59:59")
+
+    if limit:
+        if not isinstance(limit, int):
+            logger.error("The limit arg you provided is not the type of int, ignoring it")
+        base_url += "&" + "limit=" + str(limit)
+
+    return dispatch_http_get(base_url)
     
-    
-    logger.warning("Imagery endpoint, dispatching request : %s ", req_url)
-
-    response = requests.get(req_url)
-
-    
-    logger.warning("Retrieved response from imagery endpoint: %s", response.text)
-
-    return response
-
-
