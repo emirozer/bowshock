@@ -11,7 +11,7 @@
 bowshock is an all-in-one wrapper for NASA API's.
 Here is a list of currently supported API's :
 
-* NASA [Earth API](https://data.nasa.gov/developer/external/planetary/#imagery) 
+* NASA [Earth API](https://data.nasa.gov/developer/external/planetary/#imagery)
 * NASA [APOD API](https://data.nasa.gov/developer/external/planetary/#address)
 * NASA [Patents API](https://data.nasa.gov/developer/external/planetary/#sounds)
 * NASA [Earth Temperature Anomalies API](https://data.nasa.gov/developer/external/planetary/#coordinates)
@@ -26,7 +26,7 @@ Here is a list of currently supported API's :
 
 ##Install
 
-Standart Procedure 
+Standart Procedure
 
 	pip install bowshock
 
@@ -79,7 +79,7 @@ asterank.asterank(
 -
 #####Earth
 ```python
-from bowshock import apod
+from bowshock import earth
 
 # imagery endpoint lon & lat mandatory, rest optional
 earth.imagery(lon=100.75,
@@ -96,7 +96,7 @@ earth.assets(lon=100.75, lat=1.6, begin="2015-02-02", end="2015-02-10")
 ```python
 from bowshock import helioviewer
 
-# args are mandatory 
+# args are mandatory
 helioviewer.getjp2image(date='2014-01-01T23:59:59', sourceId=14)
 #args are mandatory
 helioviewer.getjp2header(Id=7654321)
