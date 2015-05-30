@@ -1,6 +1,8 @@
 import unittest
 import sys
 
+sys.path.append("../bowshock/")
+
 from time import sleep
 from bowshock import star
 

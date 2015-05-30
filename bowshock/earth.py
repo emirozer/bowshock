@@ -8,7 +8,7 @@
 #Note that this is a rough calculation, mainly used to filter out exceedingly cloudy images.
 import decimal
 
-from helpers import nasa_api_key, bowshock_logger, vali_date, validate_float, dispatch_http_get
+from bowshock.helpers import nasa_api_key, bowshock_logger, vali_date, validate_float, dispatch_http_get
 
 logger = bowshock_logger()
 

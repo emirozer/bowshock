@@ -2,20 +2,23 @@ import unittest
 import sys
 from time import sleep
 
-from bowshock import skymorph
+sys.path.append("../bowshock/")
 
-class skymorph_UnitTests(unittest.TestCase):
-    def test_skymorph_object_search(self):
+from bowshock import techport
 
-        r = skymorph.search_target_obj("J99TS7A")
+class techport_UnitTests(unittest.TestCase):
+    def test_techport_api(self):
+
+        r = techport.techport(Id="4795")
         self.assertEqual(r.status_code, 200)
         sleep(2)
 
 
 if __name__ == "__main__":
+
     # Build the test suite
     suite = unittest.TestSuite()
-    suite.addTest(unittest.makeSuite(skymorph_UnitTests))
+    suite.addTest(unittest.makeSuite(techport_UnitTests))
 
     # Execute the test suite
     result = unittest.TextTestRunner(verbosity=2).run(suite)

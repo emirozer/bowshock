@@ -4,16 +4,18 @@ install:
   - "pip install -r requirements.txt"
 
 script:
-  - python tests/apod_tests.py
-  - python tests/asterank_tests.py
-  - python tests/earth_tests.py
-  - python tests/helioviewer_tests.py
-  - python tests/maas_tests.py
-  - python tests/skymorph_tests.py
-  - python tests/star_tests.py
-  - python tests/techport_tests.py
-  - python tests/temperature_anomalies_tests.py
-  
+  - python tests/test_apod.py
+  - python tests/test_asterank.py
+  - python tests/test_earth.py
+  - python tests/test_helioviewer.py
+  - python tests/test_maas.py
+  # - python tests/test_patents.py
+  # - python tests/test_predictthesky.py
+  - python tests/test_skymorph.py
+  - python tests/test_star.py
+  - python tests/test_techport.py
+  - python tests/test_temperature_anomalies.py
+
 
 notifications:
   email: false

@@ -1,6 +1,6 @@
 # http://hacktheuniverse.github.io/star-api/
 
-from helpers import dispatch_http_get
+from bowshock.helpers import dispatch_http_get
 
 
 def stars():

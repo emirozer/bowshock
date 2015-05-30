@@ -2,24 +2,27 @@ import unittest
 import sys
 from time import sleep
 
-from bowshock import patents
+sys.path.append("../bowshock/")
 
-class patents_UnitTests(unittest.TestCase):
-    def test_patents_endpoint_full(self):
+from bowshock import apod
 
-        r = patents.patents(query="temperature", concept_tags=True, limit=5)
+
+class apod_UnitTests(unittest.TestCase):
+    def test_apod_endpoint_full(self):
+
+        r = apod.apod(date="2015-02-02", concept_tags=True)
         self.assertEqual(r.status_code, 200)
         sleep(2)
 
-    def test_patents_endpoint_notags(self):
+    def test_apod_endpoint_notags(self):
 
-        r = patents.patents(query="temperature", limit=5)
+        r = apod.apod(date="2015-02-02")
         self.assertEqual(r.status_code, 200)
         sleep(2)
 
-    def test_patents_endpoint_nolimit(self):
-
-        r = patents.patents(query="temperature")
+    def test_apod_endpoint_noargs(self):
+        # no tags should pass , as no date defaults to today
+        r = apod.apod()
         self.assertEqual(r.status_code, 200)
         sleep(2)
 
@@ -28,7 +31,7 @@ if __name__ == "__main__":
 
     # Build the test suite
     suite = unittest.TestSuite()
-    suite.addTest(unittest.makeSuite(patents_UnitTests))
+    suite.addTest(unittest.makeSuite(apod_UnitTests))
 
     # Execute the test suite
     result = unittest.TextTestRunner(verbosity=2).run(suite)

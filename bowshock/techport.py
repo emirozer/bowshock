@@ -13,7 +13,7 @@
 #a machine-readable format. This API can be used to export TechPort data into an XML format,
 #which can be further processed and analyzed.
 
-from helpers import dispatch_http_get
+from bowshock.helpers import dispatch_http_get
 
 
 def techport(Id):

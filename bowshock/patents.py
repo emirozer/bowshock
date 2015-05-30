@@ -2,7 +2,7 @@
 # Through partnerships and licensing agreements with industry, 
 # these patents ensure that NASAs investments in pioneering research find secondary uses that benefit the economy
 # create jobs, and improve quality of life. This endpoint provides structured, searchable developer access to NASAs patents that have been curated to support technology transfer.
-from helpers import nasa_api_key, bowshock_logger, dispatch_http_get
+from bowshock.helpers import nasa_api_key, bowshock_logger, dispatch_http_get
 
 logger = bowshock_logger()
 

@@ -2,28 +2,28 @@ import unittest
 import sys
 from time import sleep
 
-from bowshock import helioviewer
+sys.path.append("../bowshock/")
 
+from bowshock import maas
 
-class helioviewer_UnitTests(unittest.TestCase):
-    def test_helioviewer_api_getjp2image(self):
+class maas_UnitTests(unittest.TestCase):
+    def test_maas_latest_endpoint(self):
 
-        r = helioviewer.getjp2image(date='2014-01-01T23:59:59', sourceId=14)
+        r = maas.maas_latest()
         self.assertEqual(r.status_code, 200)
         sleep(2)
 
-    def test_helioviewer_api_getjp2header(self):
+    def test_maas_archive_endpoint_w_dates(self):
 
-        r = helioviewer.getjp2header(Id=7654321)
+        r = maas.maas_archive('2012-10-01', '2012-10-31')
         self.assertEqual(r.status_code, 200)
         sleep(2)
 
 
 if __name__ == "__main__":
-
     # Build the test suite
     suite = unittest.TestSuite()
-    suite.addTest(unittest.makeSuite(helioviewer_UnitTests))
+    suite.addTest(unittest.makeSuite(maas_UnitTests))
 
     # Execute the test suite
     result = unittest.TextTestRunner(verbosity=2).run(suite)

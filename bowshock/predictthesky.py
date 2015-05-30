@@ -12,7 +12,7 @@
 # GET	/event/<category>	lat, lon, elevation, limit, date
 import decimal
 
-from helpers import bowshock_logger, validate_iso8601, validate_float, dispatch_http_get
+from bowshock.helpers import bowshock_logger, validate_iso8601, validate_float, dispatch_http_get
 
 logger = bowshock_logger()
 

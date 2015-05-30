@@ -2,6 +2,8 @@ import unittest
 import sys
 from time import sleep
 
+sys.path.append("../bowshock/")
+
 from bowshock import asterank
 
 class asterank_UnitTests(unittest.TestCase):

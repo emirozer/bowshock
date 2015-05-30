@@ -4,7 +4,7 @@
 # This endpoint restructures the query and response to correspond to other APIs on api.nasa.gov. The developer supplies a location and date range, and the returned object is a list of dictionaries that is ready for visualization in the d3 framework.
 import decimal
 
-from helpers import nasa_api_key, bowshock_logger, validate_year, validate_float, dispatch_http_get
+from bowshock.helpers import nasa_api_key, bowshock_logger, validate_year, validate_float, dispatch_http_get
 
 logger = bowshock_logger()
 
