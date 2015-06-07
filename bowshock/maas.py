@@ -6,7 +6,7 @@
 # Our implementation of the API is available at marsweather.ingenology.com.
 import decimal
 
-from helpers import nasa_api_key, bowshock_logger, vali_date, validate_float, dispatch_http_get
+from bowshock.helpers import nasa_api_key, bowshock_logger, vali_date, validate_float, dispatch_http_get
 
 logger = bowshock_logger()
 

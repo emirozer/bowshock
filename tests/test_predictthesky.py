@@ -2,12 +2,15 @@ import unittest
 import sys
 from time import sleep
 
-from bowshock import techport
+sys.path.append("../bowshock/")
 
-class techport_UnitTests(unittest.TestCase):
-    def test_techport_api(self):
+from bowshock import predictthesky
 
-        r = techport.techport(Id="4795")
+@unittest.skip("Predictthesky.org API still in development")
+class predictthesky_UnitTests(unittest.TestCase):
+    def test_spaceevents_endpoint_latlon(self):
+
+        r = predictthesky.space_events(lon=100.75, lat=1.5)
         self.assertEqual(r.status_code, 200)
         sleep(2)
 
@@ -16,7 +19,7 @@ if __name__ == "__main__":
 
     # Build the test suite
     suite = unittest.TestSuite()
-    suite.addTest(unittest.makeSuite(techport_UnitTests))
+    suite.addTest(unittest.makeSuite(predictthesky_UnitTests))
 
     # Execute the test suite
     result = unittest.TextTestRunner(verbosity=2).run(suite)

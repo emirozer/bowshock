@@ -2,7 +2,7 @@
 
 # http://helioviewer.org/api/docs/v1/
 # The Helioviewer Project maintains a set of Public APIs with the goal of improving access to solar and heliospheric datasets to scientists, educators, developers, and the general public. Read below for descriptions of each API endpoint and examples of usage.
-from helpers import bowshock_logger, validate_iso8601, dispatch_http_get
+from bowshock.helpers import bowshock_logger, validate_iso8601, dispatch_http_get
 
 logger = bowshock_logger()
 

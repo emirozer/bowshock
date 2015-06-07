@@ -1,7 +1,7 @@
 # http://www.asterank.com/skymorph
 
 #This API wraps NASA's SkyMorph archive in a RESTful JSON interface. Currently, it provides observation and image data from the NEAT survey.
-from helpers import bowshock_logger, dispatch_http_get
+from bowshock.helpers import bowshock_logger, dispatch_http_get
 
 logger = bowshock_logger()
 

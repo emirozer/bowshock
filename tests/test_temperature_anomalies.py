@@ -2,6 +2,8 @@ import unittest
 import sys
 from time import sleep
 
+sys.path.append("../bowshock/")
+
 from bowshock import temperature_anomalies
 
 

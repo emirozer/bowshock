@@ -4,7 +4,7 @@
 
 #The database currently runs on mongodb and queries must adhere to mongo's json format for a 'find' operation.
 import json
-from helpers import bowshock_logger, dispatch_http_get
+from bowshock.helpers import bowshock_logger, dispatch_http_get
 
 logger = bowshock_logger()
 
