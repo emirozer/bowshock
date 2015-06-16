@@ -3,7 +3,7 @@ import os
 
 setup(
     name='bowshock',
-    version='0.0.1',
+    version='0.0.2',
     author='Emir Ozer',
     author_email='emirozer@yandex.com',
     url='https://github.com/emirozer/bowshock',
