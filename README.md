@@ -1,5 +1,6 @@
 ![Screenshot](https://raw.githubusercontent.com/emirozer/bowshock/master/docs/bowshock2.png)
 ===========
+[![PyPI version](https://badge.fury.io/py/bowshock.svg)](http://badge.fury.io/py/bowshock)
 [![Downloads](https://pypip.in/download/bowshock/badge.svg)](https://pypi.python.org/pypi/bowshock/)
 [![Latest Version](https://pypip.in/version/bowshock/badge.svg)](https://pypi.python.org/pypi/bowshock/)
 [![Build Status](https://travis-ci.org/emirozer/bowshock.svg)](https://travis-ci.org/emirozer/bowshock)
