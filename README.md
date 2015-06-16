@@ -1,8 +1,8 @@
 ![Screenshot](https://raw.githubusercontent.com/emirozer/bowshock/master/docs/bowshock2.png)
 ===========
 [![PyPI version](https://badge.fury.io/py/bowshock.svg)](http://badge.fury.io/py/bowshock)
-[![Downloads](https://pypip.in/download/bowshock/badge.svg)](https://pypi.python.org/pypi/bowshock/)
-[![Latest Version](https://pypip.in/version/bowshock/badge.svg)](https://pypi.python.org/pypi/bowshock/)
+[![Downloads](https://img.shields.io/pypi/dm/bowshock.svg)](https://img.shields.io/pypi/dm/bowshock.svg)
+[![Status](https://img.shields.io/pypi/status/bowshock.svg)](https://img.shields.io/pypi/status/bowshock.svg)
 [![Build Status](https://travis-ci.org/emirozer/bowshock.svg)](https://travis-ci.org/emirozer/bowshock)
 
 ===========
