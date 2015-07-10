@@ -58,7 +58,7 @@ def imagery(lon=None, lat=None, dim=None, date=None, cloud_score=None):
         try:
             validate_float(dim)
             dim = decimal.Decimal(dim)
-            base_url + "dim=" + str(dim) + "&"
+            base_url += "dim=" + str(dim) + "&"
         except:
             raise ValueError("imagery endpoint expects dim to be a float")
 
