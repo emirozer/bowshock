@@ -192,6 +192,11 @@ from bowshock import techport
 techport.techport(Id="4795")
 
 ```
+##Contributors
+
+* [Dan Wagner](https://github.com/danwagnerco)
+<br>
+
 ##TODO
 - Lance-Modis API - http://lance-modis.eosdis.nasa.gov/user_services/api-lance.html
 
