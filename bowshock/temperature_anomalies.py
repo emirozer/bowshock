@@ -9,7 +9,7 @@ from bowshock.helpers import nasa_api_key, bowshock_logger, validate_year, valid
 logger = bowshock_logger()
 
 
-def adress(adress=None, begin=None, end=None):
+def address(address=None, begin=None, end=None):
     '''
     HTTP REQUEST
 
@@ -26,18 +26,18 @@ def adress(adress=None, begin=None, end=None):
 
     https://api.data.gov/nasa/planetary/earth/temperature/address?text=1800 F Street, NW, Washington DC&begin=1990
     '''
-    base_url = "http://api.data.gov/nasa/planetary/earth/temperature/adress?"
+    base_url = "http://api.data.gov/nasa/planetary/earth/temperature/address?"
 
-    if not adress:
+    if not address:
         raise ValueError(
-            "adress is missing, which is mandatory. example : 1800 F Street, NW, Washington DC")
-    elif not isinstance(adress, str):
+            "address is missing, which is mandatory. example : 1800 F Street, NW, Washington DC")
+    elif not isinstance(address, str):
         try:
-            adress = str(adress)
+            address = str(address)
         except:
-            raise ValueError("adress has to be type of string")
+            raise ValueError("address has to be type of string")
     else:
-        base_url += "adress=" + adress + "&"
+        base_url += "text=" + address + "&"
 
     if not begin:
         raise ValueError(
