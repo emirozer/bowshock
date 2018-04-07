@@ -23,15 +23,15 @@ def imagery(lon=None, lat=None, dim=None, date=None, cloud_score=None):
     # dim	float	0.025	width and height of image in degrees
     # date	YYYY-MM-DD  today	date of image ----if not supplied, then the most recent image (i.e., closest to today) is returned
     #cloud_score	bool	False	calculate the percentage of the image covered by clouds
-    #api_key	string	vDEMO_KEY	api.data.gov key for expanded usage
+    #api_key	string	vDEMO_KEY	api.nasa.gov key for expanded usage
 
     # ---------EXAMPLE QUERY--------
 
-    # https://api.data.gov/nasa/planetary/earth/imagery?lon=100.75&lat=1.5&date=2014-02-01&cloud_score=True&api_key=DEMO_KEY
+    # https://api.nasa.gov/planetary/earth/imagery?lon=100.75&lat=1.5&date=2014-02-01&cloud_score=True&api_key=DEMO_KEY
 
     '''
 
-    base_url = "http://api.data.gov/nasa/planetary/earth/imagery?"
+    base_url = "https://api.nasa.gov/planetary/earth/imagery?"
 
     if not lon or not lat:
         raise ValueError(
@@ -86,7 +86,7 @@ def assets(lon=None, lat=None, begin=None, end=None):
     '''
     HTTP REQUEST
 
-    GET https://api.data.gov/nasa/planetary/earth/assets
+    GET https://api.nasa.gov/planetary/earth/assets
 
     QUERY PARAMETERS
 
@@ -95,12 +95,12 @@ def assets(lon=None, lat=None, begin=None, end=None):
     lon	float	n/a	Longitude
     begin	YYYY-MM-DD	n/a	beginning of date range
     end	        YYYY-MM-DD	today	end of date range
-    api_key	string	DEMO_KEY	api.data.gov key for expanded usage
+    api_key	string	DEMO_KEY	api.nasa.gov key for expanded usage
     EXAMPLE QUERY
 
-    https://api.data.gov/nasa/planetary/earth/assets?lon=100.75&lat=1.5&begin=2014-02-01&api_key=DEMO_KEY
+    https://api.nasa.gov/planetary/earth/assets?lon=100.75&lat=1.5&begin=2014-02-01&api_key=DEMO_KEY
     '''
-    base_url = "http://api.data.gov/nasa/planetary/earth/assets?"
+    base_url = "https://api.nasa.gov/planetary/earth/assets?"
 
     if not lon or not lat:
         raise ValueError(

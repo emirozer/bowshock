@@ -10,19 +10,19 @@ def apod(date=None, concept_tags=None):
     '''
     HTTP REQUEST
 
-    GET https://api.data.gov/nasa/planetary/apod
+    GET https://api.nasa.gov/planetary/apod
 
     QUERY PARAMETERS
 
     Parameter	Type	Default	Description
     date	YYYY-MM-DD	today	The date of the APOD image to retrieve
     concept_tags	bool	False	Return an ordered dictionary of concepts from the APOD explanation
-    api_key	string	DEMO_KEY	api.data.gov key for expanded usage
+    api_key	string	DEMO_KEY	api.nasa.gov key for expanded usage
     EXAMPLE QUERY
 
-    https://api.data.gov/nasa/planetary/apod?concept_tags=True&api_key=DEMO_KEY
+    https://api.nasa.gov/planetary/apod?concept_tags=True&api_key=DEMO_KEY
     '''
-    base_url = "http://api.data.gov/nasa/planetary/apod?"
+    base_url = "https://api.nasa.gov/planetary/apod?"
 
     if date:
         try:

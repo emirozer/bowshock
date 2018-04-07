@@ -13,7 +13,7 @@ def address(address=None, begin=None, end=None):
     '''
     HTTP REQUEST
 
-    GET https://api.data.gov/nasa/planetary/earth/temperature/address
+    GET https://api.nasa.gov/planetary/earth/temperature/address
 
     QUERY PARAMETERS
 
@@ -21,12 +21,12 @@ def address(address=None, begin=None, end=None):
     text	string	n/a	Address string
     begin	int	1880	beginning year for date range, inclusive
     end	int	2014	end year for date range, inclusive
-    api_key	string	DEMO_KEY	api.data.gov key for expanded usage
+    api_key	string	DEMO_KEY	api.nasa.gov key for expanded usage
     EXAMPLE QUERY
 
-    https://api.data.gov/nasa/planetary/earth/temperature/address?text=1800 F Street, NW, Washington DC&begin=1990
+    https://api.nasa.gov/planetary/earth/temperature/address?text=1800 F Street, NW, Washington DC&begin=1990
     '''
-    base_url = "http://api.data.gov/nasa/planetary/earth/temperature/address?"
+    base_url = "https://api.nasa.gov/planetary/earth/temperature/address?"
 
     if not address:
         raise ValueError(
@@ -65,7 +65,7 @@ def coordinate(lon=None, lat=None, begin=None, end=None):
     '''
     HTTP REQUEST
 
-    GET https://api.data.gov/planetary/earth/temperature/coords
+    GET https://api.nasa.gov/planetary/earth/temperature/coords
 
     QUERY PARAMETERS
 
@@ -74,14 +74,14 @@ def coordinate(lon=None, lat=None, begin=None, end=None):
     lon	float	n/a	Longitude
     begin	int	1880	beginning year for date range, inclusive
     end	int	2014	end year for date range, inclusive
-    api_key	string	DEMO_KEY	api.data.gov key for expanded usage
+    api_key	string	DEMO_KEY	api.nasa.gov key for expanded usage
     EXAMPLE QUERY
 
-    https://api.data.gov/nasa/planetary/earth/temperature/coords?lon=100.3&lat=1.6&begin=1990&end=2005&api_key=DEMO_KEY
+    https://api.nasa.gov/planetary/earth/temperature/coords?lon=100.3&lat=1.6&begin=1990&end=2005&api_key=DEMO_KEY
 
 
     '''
-    base_url = "http://api.data.gov/nasa/planetary/earth/temperature/coords?"
+    base_url = "https://api.nasa.gov/planetary/earth/temperature/coords?"
 
     if not lon or not lat:
         raise ValueError(
