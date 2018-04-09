@@ -11,7 +11,7 @@ def patents(query=None, concept_tags=None, limit=None):
     '''
     HTTP REQUEST
 
-    GET https://api.data.gov/nasa/patents
+    GET https://api.nasa.gov/patents
 
     QUERY PARAMETERS
 
@@ -19,13 +19,13 @@ def patents(query=None, concept_tags=None, limit=None):
     query	string	None	Search text to filter results
     concept_tags	bool	False	Return an ordered dictionary of concepts from the patent abstract
     limit	int	all	number of patents to return
-    api_key	string	DEMO_KEY	api.data.gov key for expanded usage
+    api_key	string	DEMO_KEY	api.nasa.gov key for expanded usage
     EXAMPLE QUERY
 
-    https://api.data.gov/nasa/patents/content?query=temperature&limit=5&api_key=DEMO_KEY
+    https://api.nasa.gov/patents/content?query=temperature&limit=5&api_key=DEMO_KEY
 
     '''
-    base_url = "http://api.data.gov/nasa/patents/content?"
+    base_url = "https://api.nasa.gov/patents/content?"
 
     if not query:
         raise ValueError("search query is missing, which is mandatory.")
